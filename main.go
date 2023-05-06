@@ -5,13 +5,14 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"os/exec"
+	"path/filepath"
 )
 
 func main() {
 	r := gin.Default()
 
 	// 加载模板文件
-	r.LoadHTMLGlob("templates/*")
+	r.LoadHTMLGlob(filepath.Join("templates", "*.gohtml"))
 
 	// 显示初始化安装页面
 	r.GET("/", func(c *gin.Context) {
